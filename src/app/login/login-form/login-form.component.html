@@ -1,0 +1,25 @@
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <div class="form-group">
+        <div class="email">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" #email="ngModel" ngModel required/>
+            <div *ngIf="email.invalid && email.touched" class="text-danger">
+                Email is required.
+              </div>
+        </div>
+    </div>
+    <div class="password">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" #password="ngModel" ngModel required="" />
+        <div *ngIf="password.invalid && password.touched" class="text-danger">
+            Password is required.
+          </div>
+    </div>
+    <div class="regiester">
+        <h5>
+            If You Don't Have an Account Please
+            <span><a href="">Regiester</a></span>
+        </h5>
+    </div>
+    <button type="submit">Login</button>
+</form>
