@@ -1,0 +1,24 @@
+<div class="container">
+  <div *ngIf="item.length==0; then noitems else showitems"></div>
+
+  <ng-template #noitems>There is no wishes to display</ng-template>
+
+<ng-template #showitems>
+  <ul >
+  <li *ngFor="let x of item ; index as i" class="d-flex justify-content-between align-items-center ">
+    <div class="form-check">
+       <input class="form-check-input checkinput" type="checkbox" value="" id="flexCheckDefault" [attr.data-index]="i" [checked]='x.checked' (click)="toggleclick(x)" >
+      <label class="form-check-label" for="flexCheckDefault" [ngClass]="x.checked? 'strike-out shadowed':''" >
+        <input #taskinput [ngClass]="{'edit':x.isEditable,'not-edit':!x.isEditable}" type="text" class="form-control" id="wishinput" value=" {{x.wishitem}}" [readOnly]="!x.isEditable">
+
+      </label>
+      <hr>
+    </div>
+    <button type="button" id="delete" class="btn btn-danger mb-1 " (click)="removewish(x)" >Delete</button>
+    <button type="button" id="edit" class="btn btn-primary mb-1 " (click)="onEdit(i)" *ngIf="!x.isEditable" >Edit</button>
+    <button type="button" id="save" class="btn btn-warning mb-1 " (click)="onSave(i,taskinput.value)" *ngIf="x.isEditable">Save</button>
+  </li>
+</ul>
+</ng-template>
+
+</div>

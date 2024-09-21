@@ -1,0 +1,5 @@
+[
+  {"wishitem":"Learn angular!","checked":false,"isEditable":false},
+  {"wishitem":"to drink coffee","checked":true,"isEditable":false},
+  {"wishitem":"to ride a bike","checked":false,"isEditable":false}
+]

@@ -1,0 +1,37 @@
+ul{
+  list-style-type: none;
+}
+.strike-out{
+  text-decoration: line-through;
+}
+.shadowed{
+  color: grey;
+}
+button:hover{
+  cursor: pointer;
+}
+#wishinput{
+  margin-block-start: 1.5rem;
+}
+.checkinput{
+  margin: 2.2rem  0.65rem 0rem 0rem;
+}
+#edit,#save{
+  padding: .5rem 1rem;
+  margin-block-start:1rem ;
+}
+#edit,#save,#delete{
+  margin-block-start: 1.5rem;
+}
+#delete{
+  padding-block: .5rem;
+}
+.edit{
+  border: 2px solid orange;
+
+}
+
+.not-edit{
+  border: none;
+  outline: none;
+}

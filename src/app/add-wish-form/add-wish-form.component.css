@@ -1,0 +1,10 @@
+form{
+  width: 50%;
+  margin-inline: auto;
+}
+form input
+{
+  width: 50%;
+  display: inline-block;
+  margin: 1rem;
+}
