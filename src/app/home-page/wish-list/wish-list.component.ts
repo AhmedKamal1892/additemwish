@@ -1,6 +1,6 @@
 import { Component,Input } from '@angular/core';
 import { Wishitem } from 'src/shared/model/wishitem';
-import events from './../../shared/services/eventService'
+import events from '../../../shared/services/eventService'
 @Component({
   selector: 'wish-list',
   templateUrl: './wish-list.component.html',

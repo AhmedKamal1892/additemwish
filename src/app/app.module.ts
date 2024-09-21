@@ -4,24 +4,28 @@ import  {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { WishListComponent } from './wish-list/wish-list.component';
-import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
-import { WishFilterComponent } from './wish-filter/wish-filter.component';
-import { CommonModule } from '@angular/common';
 
-import { HomePageComponent } from './home-page/home-page.component';
+
+
+import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { WishFilterComponent } from './home-page/wish-filter/wish-filter.component';
+import { WishListComponent } from './home-page/wish-list/wish-list.component';
+import { AddWishFormComponent } from './home-page/add-wish-form/add-wish-form.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    HomePageComponent,
+    WishFilterComponent,
     WishListComponent,
     AddWishFormComponent,
-    LoginComponent,
-    LoginFormComponent,
-    WishFilterComponent,
-    HomePageComponent
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -33,4 +37,6 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}
