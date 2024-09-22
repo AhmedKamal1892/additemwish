@@ -32,7 +32,7 @@ filter:any=()=> {
 }
 
 get visibleitems():Wishitem[]{
-  return this.item.filter(this.filter)
+  return this.item?.filter(this.filter)
 }
 
 

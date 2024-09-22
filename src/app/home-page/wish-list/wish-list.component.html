@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="item.length==0; then noitems else showitems"></div>
+  <div *ngIf="item?.length==0; then noitems else showitems"></div>
 
   <ng-template #noitems>There is no wishes to display</ng-template>
 

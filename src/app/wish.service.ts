@@ -10,4 +10,8 @@ export class WishService {
 getwishes(){
   return this.http.get('assets/wishes.json')
 }
+
+setWishes(wishList : string) {
+  wishList = '';
+}
 }
