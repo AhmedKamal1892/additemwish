@@ -3,6 +3,7 @@ import { Wishitem } from 'src/shared/model/wishitem';
 import { WishService } from '../wish.service';
 import events from 'src/shared/services/eventService';
 import { LoginRegisterService } from '../login-register.service';
+import { LocalStorageService } from '../local-storage.service';
 
 @Component({
     selector: 'app-home-page',
@@ -17,22 +18,30 @@ export class HomePageComponent implements OnInit {
 
     constructor(
         private wishservice: WishService,
-        private loginRegisterService: LoginRegisterService
+        private loginRegisterService: LoginRegisterService,
+        private localStorageService: LocalStorageService
     ) {
         events.listen('removewish', (wish: any) => {
             let index = this.item.indexOf(wish);
             this.item.splice(index, 1);
         });
     }
+   
     ngOnInit(): void {
-        this.loggedinUser = this.loginRegisterService.loggedInUser; // passed the loggedinUser
-        this.wishservice.getwishes().subscribe((data: any) => {
-            this.item = data;
-        });
+      this.startInterval();
+        this.loggedinUser = this.loginRegisterService.loggedInUser; 
+        console.log(this.loggedinUser);
+        this.item = this.loggedinUser.wishList; 
     }
     filter: any = () => {};
 
     get visibleitems(): Wishitem[] {
         return this.item?.filter(this.filter);
+    }
+    startInterval() {
+        let intervalId = setInterval(() => {
+            console.log('Hello from setInterval');
+            this.localStorageService.saveUsers(this.loginRegisterService.users);
+        }, 1000);
     }
 }
