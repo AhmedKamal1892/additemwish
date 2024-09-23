@@ -14,6 +14,8 @@ import { WishFilterComponent } from './home-page/wish-filter/wish-filter.compone
 import { WishListComponent } from './home-page/wish-list/wish-list.component';
 import { AddWishFormComponent } from './home-page/add-wish-form/add-wish-form.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterFormComponent } from './register/register-form/register-form.component';
 
 
 
@@ -25,7 +27,9 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
     WishFilterComponent,
     WishListComponent,
     AddWishFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
