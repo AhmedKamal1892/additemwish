@@ -1,6 +1,9 @@
 {
   "name": "angulartest",
   "version": "0.0.0",
+  "prettier": {
+    "tabWidth": 4
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
