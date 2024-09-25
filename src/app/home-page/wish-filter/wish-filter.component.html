@@ -1,5 +1,9 @@
-<select class="form-select" [(ngModel)]="listfilter" (ngModelChange)="changeFilter($event)">
-  <option value="0">All</option>
-  <option value="1">unfulfilled</option>
-  <option value="2">fulfilled</option>
-</select>
+<div class="w-full max-w-[600px] mx-auto flex justify-center">
+  <select class="px-1 py-2 focus:outline-none border-none rounded-md font-semibold text-md w-[60%] max-w-[300px] mt-2"
+    [(ngModel)]="listfilter" (ngModelChange)="changeFilter($event)">
+    <option value="0">All</option>
+    <option value="1">unfulfilled</option>
+    <option value="2">fulfilled</option>
+  </select>
+
+</div>

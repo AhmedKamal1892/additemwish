@@ -1,26 +1,30 @@
-<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-    <div class="form-group">
-        <div class="email">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" #email="ngModel" ngModel required/>
-            <div *ngIf="email.invalid && email.touched" class="text-danger">
-                Email is required.
-              </div>
-        </div>
+<form class="flex flex-col gap-3" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+  <div class="form-group">
+    <div class="email">
+      <label for="email"></label>
+      <input placeholder="Email" class="py-2 px-5 focus:outline-none border-none rounded-lg font-semibold text-md mb-2"
+        type="email" name="email" id="email" #email="ngModel" ngModel required />
+      <div class="font-medium italic text-red-500 text-md" *ngIf="email.invalid && email.touched">
+        Email is required.
+      </div>
     </div>
-    <div class="password">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" #password="ngModel" ngModel required="" />
-        <div *ngIf="password.invalid && password.touched" class="text-danger">
-            Password is required.
-          </div>
+  </div>
+  <div class="password">
+    <label for="password"></label>
+    <input placeholder="Password" class="py-2 px-5 focus:outline-none border-none rounded-lg font-semibold text-md mb-2"
+      type="password" name="password" id="password" #password="ngModel" ngModel required="" />
+    <div class="font-medium italic text-red-500 text-md" *ngIf="password.invalid && password.touched">
+      Password is required.
     </div>
-    <div class="login">
-        <h5>
-            Go to Login Page
-            <span><a routerLink="/login">Login</a></span>
-        </h5>
-    </div>
-    <button type="submit" [disabled]="!registerForm.valid">Register</button>
+  </div>
+  <div class="login">
+    <h5 class="text-slate-200 text-sm font-medium">
+      Go to Login Page
+      <span><a class="underline hover:opacity-75 cursor-pointer duration-150 ease-linear"
+          routerLink="/login">Login</a></span>
+    </h5>
+  </div>
+  <button
+    class="text-slate-200 font-medium p-2 hover:opacity-75 ease-linear duration-150 cursor-pointer rounded-md bg-slate-700 mx-auto w-full"
+    type="submit" [disabled]="!registerForm.valid">Register</button>
 </form>
-

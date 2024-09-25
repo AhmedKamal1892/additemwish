@@ -1,4 +1,8 @@
-<form>
-  <input type="text" name="new-wish" class="form-control" placeholder="Enter Your Wish" [(ngModel)]="newwishitem" >
-<button type="submit" class="btn btn-primary" (click)="$event.preventDefault(); addnewwishitem()">Add Wish</button>
+<form class="flex items-center justify-center mt-5 w-full max-w-[600px] mx-auto">
+  <input class="py-3 px-4 focus:outline-none border-none rounded-l-lg font-semibold xs:text-sm sm:text-lg grow"
+    type="text" name="new-wish" placeholder="Enter Your Wish" [(ngModel)]="newwishitem">
+
+  <button type="submit"
+    class="px-3 py-3 focus:outline-none border-none rounded-r-lg font-semibold xs:text-sm sm:text-lg bg-blue-500 h-full text-white"
+    (click)="$event.preventDefault(); addnewwishitem()">Add</button>
 </form>

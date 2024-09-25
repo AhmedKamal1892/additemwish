@@ -1,25 +1,30 @@
-<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-    <div class="form-group">
-        <div class="email">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" #email="ngModel" ngModel required/>
-            <div *ngIf="email.invalid && email.touched" class="text-danger">
-                Email is required.
-              </div>
-        </div>
+<form class="flex flex-col gap-3" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+  <div class="form-group">
+    <div class="email">
+      <label for="email" class="text-white text-lg mr-1 font-medium"></label>
+      <input class="py-2 px-5 focus:outline-none border-none rounded-lg font-semibold text-md mb-2" type="email"
+        placeholder="Email" name="email" id="email" #email="ngModel" ngModel required />
+      <div *ngIf="email.invalid && email.touched" class="font-medium italic text-red-500 text-md">
+        Email is required.
+      </div>
     </div>
-    <div class="password">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" #password="ngModel" ngModel required="" />
-        <div *ngIf="password.invalid && password.touched" class="text-danger">
-            Password is required.
-          </div>
+  </div>
+  <div class="password">
+    <label for="password" class="text-white text-lg mr-1 font-medium"></label>
+    <input class="py-2 px-5 focus:outline-none border-none rounded-lg font-semibold text-md mb-2" type="password"
+      placeholder="Password" name="password" id="password" #password="ngModel" ngModel required="" />
+    <div *ngIf="password.invalid && password.touched" class="font-medium italic text-red-500 text-md">
+      Password is required.
     </div>
-    <div class="regiester">
-        <h5>
-            If You Don't Have an Account Please
-            <span><a routerLink="/register">Regiester</a></span>
-        </h5>
-    </div>
-    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+  </div>
+  <div class="regiester">
+    <h5 class="text-slate-200 text-sm font-medium m-3">
+      If You Don't Have an Account Please
+      <span><a class="underline hover:opacity-75 cursor-pointer duration-150 ease-linear"
+          routerLink="/register">Regiester</a></span>
+    </h5>
+  </div>
+  <button
+    class="text-slate-200 font-medium p-2 hover:opacity-75 ease-linear duration-150 cursor-pointer rounded-md bg-slate-700 mx-auto w-full"
+    type="submit" [disabled]="!loginForm.valid">Login</button>
 </form>

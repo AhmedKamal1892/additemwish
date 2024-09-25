@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+    background-color: #111927;
+    background-image:
+        radial-gradient(at 47% 33%, hsl(162.00, 77%, 40%) 0, transparent 59%),
+        radial-gradient(at 82% 65%, hsl(218.00, 39%, 11%) 0, transparent 55%);
+
+}
+.form-card{
+     backdrop-filter: blur(15px) saturate(89%);
+    -webkit-backdrop-filter: blur(15px) saturate(89%);
+    background-color: rgba(17, 25, 40, 0.78);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+.app-container{
+  backdrop-filter: blur(7px) saturate(97%);
+    -webkit-backdrop-filter: blur(7px) saturate(97%);
+    background-color: rgba(17, 25, 40, 0.63);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
