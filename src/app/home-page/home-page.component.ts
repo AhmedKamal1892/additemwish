@@ -4,6 +4,8 @@ import { WishService } from '../wish.service';
 import events from 'src/shared/services/eventService';
 import { LoginRegisterService } from '../login-register.service';
 import { LocalStorageService } from '../local-storage.service';
+import { Router } from '@angular/router';
+import { interval } from 'rxjs';
 
 @Component({
     selector: 'app-home-page',
@@ -17,13 +19,14 @@ export class HomePageComponent implements OnInit {
         password: '',
         wishList: [],
     };
-
+    intervalId: any = 0;
     title = 'angulartest';
 
     constructor(
         private wishservice: WishService,
         private loginRegisterService: LoginRegisterService,
-        private localStorageService: LocalStorageService
+        private localStorageService: LocalStorageService,
+        private router: Router
     ) {
         events.listen('removewish', (wish: any) => {
             let index = this.item.indexOf(wish);
@@ -51,9 +54,14 @@ export class HomePageComponent implements OnInit {
         return this.item?.filter(this.filter);
     }
     startInterval() {
-        let intervalId = setInterval(() => {
+      this.intervalId = setInterval(() => {
             this.localStorageService.saveLoggedInUser(this.loggedinUser);
             this.localStorageService.saveUsers(this.loginRegisterService.users);
         }, 1000);
+    }
+    logOutUser() { 
+        clearInterval(this.intervalId);
+        this.loginRegisterService.logout();
+        this.router.navigate(['/login']);
     }
 }

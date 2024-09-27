@@ -19,8 +19,11 @@ export class LocalStorageService {
         this.localStorage.setItem('loggedInUser', JSON.stringify(loggendInUser));
     }
     getLoggedInUser()  { 
-        console.log(this.localStorage.getItem('loggedInUser'));
-        return JSON.parse(this.localStorage.getItem('loggedInUser') || '{}');
+        const loggedInUser = this.localStorage.getItem('loggedInUser');
+        return loggedInUser ? JSON.parse(loggedInUser) : '{}';
+    }
+    deleteLoggedInUser() {
+        this.localStorage.removeItem('loggedInUser');
     }
     
 }

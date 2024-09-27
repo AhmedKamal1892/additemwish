@@ -47,5 +47,7 @@ export class LoginRegisterService{
       }
       return "user not found";
   }
-  
+  logout() {
+    this.localStorageService.deleteLoggedInUser();
+  }
 }

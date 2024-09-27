@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
-import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { LocalStorageService } from '../local-storage.service';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthGuardService {
         private localStorageService: LocalStorageService
     ) {}
 
-    canActivate(route: ActivatedRouteSnapshot): boolean {
+    canActivate(route: ActivatedRouteSnapshot ,state : RouterStateSnapshot): boolean {
         if (route.routeConfig?.path === 'home') {
             if (this.localStorageService.getLoggedInUser() == '{}') {
                 const isAuthenticated = this.authService.isLoggedIn();
@@ -27,7 +27,8 @@ export class AuthGuardService {
             }
         }
         else if (route.routeConfig?.path === 'login' || route.routeConfig?.path === 'register') {
-            if (this.localStorageService.getLoggedInUser() == '{}') {
+          console.log(this.localStorageService.getLoggedInUser() === '{}' ? 'true' : 'false');
+            if (this.localStorageService.getLoggedInUser() === '{}') {
                 return true;
             } else {
                 this.router.navigate(['/home']);
