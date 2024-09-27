@@ -18,6 +18,11 @@ export class RegisterFormComponent {
     this.email = form.value.email;
     this.password = form.value.password;
     const errorMessage = this.authService.register(form.value.email, form.value.password);
+    if(errorMessage == 'register successful') {
     this.router.navigate(['/home']);
+    }
+    else if(errorMessage == 'email already exists') {
+      alert(errorMessage);
+    }
   }
 }

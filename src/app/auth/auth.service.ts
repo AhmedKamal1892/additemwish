@@ -12,7 +12,7 @@ export class AuthService {
   login(email: string, password: string): string {
     if (this.loginRegisterService.Login(email,password) === "login successful") {
       this.isAuthenticated = true;
-      
+
       return 'login successful';
       
     } else if(this.loginRegisterService.Login(email,password) === "invalid password") {
@@ -29,9 +29,14 @@ export class AuthService {
     }
   }
   register(email: string, password: string): string {
-    this.loginRegisterService.Regiester(email,password);
+    if(this.loginRegisterService.Regiester(email,password) == "email already exists") {
+      this.isAuthenticated = false;
+      return "email already exists";
+    }
+    else {
     this.isAuthenticated = true;
     return "register successful";
+    }
   }
   isLoggedIn(): boolean {
     return this.isAuthenticated;
