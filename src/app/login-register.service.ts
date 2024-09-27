@@ -13,6 +13,7 @@ export class LoginRegisterService{
     loggedInUser: {email: string, password: string, wishList: Wishitem[]} = {email: '', password: '', wishList: []};
 
     initialize() : void {
+      console.log(this.loggedInUser);
       this.users = this.localStorageService.getUsers();
       console.log('Users:', this.users);
     }
@@ -23,11 +24,11 @@ export class LoginRegisterService{
             wishList: [],
         });
         this.loggedInUser = this.users[this.users.length - 1];
+        this.localStorageService.saveLoggedInUser(this.loggedInUser);
         this.localStorageService.saveUsers(this.users);
 
    }
     Login(email: string, password: string) {
-      
       for (let i = 0; i < this.users.length; i++) {
         console.log(this.users[i])
         if(this.users[i].email === email) {
@@ -35,6 +36,8 @@ export class LoginRegisterService{
           if (this.users[i].email === email && this.users[i].password === password) {
               console.log(this.users[i])
               this.loggedInUser = this.users[i];
+              this.localStorageService.saveLoggedInUser(this.loggedInUser);
+              console.log('loggedinUser:', this.loggedInUser);
               return "login successful";
           }
           else {

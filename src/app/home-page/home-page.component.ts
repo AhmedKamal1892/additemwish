@@ -12,7 +12,11 @@ import { LocalStorageService } from '../local-storage.service';
 })
 export class HomePageComponent implements OnInit {
     item!: Wishitem[];
-    loggedinUser?: { email: string; password: string; wishList: Wishitem[] };
+    loggedinUser: { email: string; password: string; wishList: Wishitem[] } = {
+        email: '',
+        password: '',
+        wishList: [],
+    };
 
     title = 'angulartest';
 
@@ -26,12 +30,20 @@ export class HomePageComponent implements OnInit {
             this.item.splice(index, 1);
         });
     }
-   
+
     ngOnInit(): void {
-      this.startInterval();
-        this.loggedinUser = this.loginRegisterService.loggedInUser; 
-        console.log(this.loggedinUser);
-        this.item = this.loggedinUser.wishList; 
+        this.startInterval();
+        if (
+            this.loginRegisterService.loggedInUser.email == '' &&
+            this.loginRegisterService.loggedInUser.password == '' &&
+            this.loginRegisterService.loggedInUser.wishList.length == 0
+        ) {
+            this.loggedinUser = this.localStorageService.getLoggedInUser();
+            this.loginRegisterService.loggedInUser = this.loggedinUser;
+        } else {
+            this.loggedinUser = this.loginRegisterService.loggedInUser;
+        }
+        this.item = this.loggedinUser.wishList;
     }
     filter: any = () => {};
 
@@ -40,7 +52,7 @@ export class HomePageComponent implements OnInit {
     }
     startInterval() {
         let intervalId = setInterval(() => {
-            console.log('Hello from setInterval');
+            this.localStorageService.saveLoggedInUser(this.loggedinUser);
             this.localStorageService.saveUsers(this.loginRegisterService.users);
         }, 1000);
     }

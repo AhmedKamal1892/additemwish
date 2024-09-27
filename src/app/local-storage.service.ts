@@ -15,5 +15,12 @@ export class LocalStorageService {
     getUsers() {
         return JSON.parse(this.localStorage.getItem(this.localStorageKey) || '[]');
     }
+    saveLoggedInUser(loggendInUser : {}) {
+        this.localStorage.setItem('loggedInUser', JSON.stringify(loggendInUser));
+    }
+    getLoggedInUser()  { 
+        console.log(this.localStorage.getItem('loggedInUser'));
+        return JSON.parse(this.localStorage.getItem('loggedInUser') || '{}');
+    }
     
 }

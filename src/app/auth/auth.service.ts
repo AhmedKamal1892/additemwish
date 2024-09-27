@@ -12,6 +12,7 @@ export class AuthService {
   login(email: string, password: string): string {
     if (this.loginRegisterService.Login(email,password) === "login successful") {
       this.isAuthenticated = true;
+      
       return 'login successful';
       
     } else if(this.loginRegisterService.Login(email,password) === "invalid password") {
