@@ -7,8 +7,8 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent , canActivate: [AuthGuardService]},
-  {path: 'login', component: LoginComponent},
-  {path: 'register' ,component: RegisterComponent},
+  {path: 'login', component: LoginComponent, canActivate: [AuthGuardService]},
+  {path: 'register' ,component: RegisterComponent, canActivate: [AuthGuardService]},
   {path: '' ,redirectTo: 'login', pathMatch: 'full'},
 ];
 

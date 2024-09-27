@@ -3,18 +3,20 @@
     <div class="email">
       <label for="email"></label>
       <input placeholder="Email" class="py-2 px-5 focus:outline-none border-none rounded-lg font-semibold text-md mb-2"
-        type="email" name="email" id="email" #email="ngModel" ngModel required />
+        type="email" name="email" id="email" #email="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" ngModel required />
       <div class="font-medium italic text-red-500 text-md" *ngIf="email.invalid && email.touched">
-        Email is required.
+        <small *ngIf="email.errors?.['pattern']">Invalid email format</small>
+        <small *ngIf="email.errors?.['required']">Email is required.</small>
       </div>
     </div>
   </div>
   <div class="password">
     <label for="password"></label>
     <input placeholder="Password" class="py-2 px-5 focus:outline-none border-none rounded-lg font-semibold text-md mb-2"
-      type="password" name="password" id="password" #password="ngModel" ngModel required="" />
+      type="password" name="password" id="password" #password="ngModel" pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]+$" ngModel required="" />
     <div class="font-medium italic text-red-500 text-md" *ngIf="password.invalid && password.touched">
-      Password is required.
+      <small *ngIf="password.errors?.['pattern']">Password must contain at least one number<br> and one special character</small>
+      <small *ngIf="password.errors?.['required']">Password is required</small>
     </div>
   </div>
   <div class="login">

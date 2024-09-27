@@ -15,5 +15,15 @@ export class LocalStorageService {
     getUsers() {
         return JSON.parse(this.localStorage.getItem(this.localStorageKey) || '[]');
     }
+    saveLoggedInUser(loggendInUser : {}) {
+        this.localStorage.setItem('loggedInUser', JSON.stringify(loggendInUser));
+    }
+    getLoggedInUser()  { 
+        const loggedInUser = this.localStorage.getItem('loggedInUser');
+        return loggedInUser ? JSON.parse(loggedInUser) : '{}';
+    }
+    deleteLoggedInUser() {
+        this.localStorage.removeItem('loggedInUser');
+    }
     
 }
