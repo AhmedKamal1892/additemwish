@@ -43,6 +43,15 @@ export class HomePageComponent implements OnInit {
         ) {
             this.loggedinUser = this.localStorageService.getLoggedInUser();
             this.loginRegisterService.loggedInUser = this.loggedinUser;
+            const loggedInUserIndex = this.loginRegisterService.users.findIndex((user,index) => {
+                if(user.email == this.loggedinUser.email && user.password == this.loggedinUser.password) {
+                    return index;
+                }
+                else {
+                    return null;
+                }
+            })
+            this.loginRegisterService.users[loggedInUserIndex] = this.loggedinUser;
         } else {
             this.loggedinUser = this.loginRegisterService.loggedInUser;
         }
