@@ -30,7 +30,9 @@ export class HomePageComponent implements OnInit {
     ) {
         events.listen('removewish', (wish: any) => {
             let index = this.item.indexOf(wish);
+            if(index >= 0) {
             this.item.splice(index, 1);
+            }
         });
     }
 
